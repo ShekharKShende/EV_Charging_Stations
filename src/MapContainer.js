@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Map from "./Map";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -23,23 +23,35 @@ const MapContainer = () => {
 
 
     const [city, setCity] = React.useState('pune');
-    const [area, setArea] = React.useState('');
-    const [locations, setLocations] = React.useState('');
+    const [locations, setLocations] = React.useState('Wakad');
     const cities = Object.keys(evData).slice(0, 3);
+    const [map_locator, set_map_locator] = React.useState({
+        location: '1600 Amphitheatre Parkway, Mountain View, california.',
+        lat: 37.42216,
+        lng: -122.08427,
+        address: '1600 Amphitheatre Parkway, Mountain View, california.'
+      });
 
 
 
     const handleCityChange = (e, value) => {
         setCity(value);
-        debugger
-        setLocations(getAreas(value))
     }
 
-    const getAreas = (city) => {
-        const locations = evData[city].map(area => area.location)
-        debugger
-        return locations
+
+    const handleLocationChange = (e, value) => {
+        setLocations(value);
     }
+
+    const getAreas = (selectedLocation) => {
+        const locat = evData[city].filter(area => area.location==selectedLocation)
+        return locat[0] 
+    }
+
+    const getlatLong = (selectedCity) => {
+        return evData[selectedCity].filter(area => area.location==locations)[0]
+    }
+
 
 
     return (<Box sx={{ flexGrow: 1 }}>
@@ -63,19 +75,20 @@ const MapContainer = () => {
                         disablePortal
                         id="area"
                         placeholder="Select Area"
-                        value={area}
-                        options={locations}
+                        onInputChange={handleLocationChange}
+                        value={locations}
+                        options={evData[city].map(area =>  area.location)}
                         renderInput={(params) => <TextField {...params} label="Area" />}
                     />
                 </Item>
                 <Item>
 
-                    <Button fullWidth variant="contained">Submit</Button>
+                    <Button fullWidth variant="contained" onClick={() => set_map_locator(getlatLong(city))}>Submit</Button>
                 </Item>
 
             </Grid>
             <Grid item md={9} style={{ padding: '3rem' }} >
-                <Item> <Map /></Item>
+                <Item> <Map location={map_locator} /></Item>
             </Grid>
 
         </Grid>

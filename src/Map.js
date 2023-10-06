@@ -4,9 +4,10 @@ import { Icon } from '@iconify/react'
 import React from 'react';
 
 const llocation = {
-  address: '1600 Amphitheatre Parkway, Mountain View, california.',
+  location: '1600 Amphitheatre Parkway, Mountain View, california.',
   lat: 37.42216,
   lng: -122.08427,
+  address: '1600 Amphitheatre Parkway, Mountain View, california.'
 }
 
 const LocationPin = ({ text }) => (
@@ -17,7 +18,7 @@ const LocationPin = ({ text }) => (
 )
 
 
-const Map = ({ location = llocation, zoomLevel = 11 }) => (
+const Map = ({ location, zoomLevel = 11 }) => (
   <div style={{ height: '80vh', width: '100%' }}>
     <GoogleMapReact
       bootstrapURLKeys={{ key: 'AIzaSyDvPWILuXHr4SkX9fNHmTa6aS76Ym85n_s', libraries: ['places', 'geometry',] }}
@@ -27,7 +28,7 @@ const Map = ({ location = llocation, zoomLevel = 11 }) => (
       <LocationPin
         lat={location.lat}
         lng={location.lng}
-        text={location.address}
+        text={location.location}
       />
     </GoogleMapReact>
   </div>
