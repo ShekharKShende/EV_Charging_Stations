@@ -30,7 +30,7 @@ const MapContainer = () => {
         lat: 37.42216,
         lng: -122.08427,
         address: '1600 Amphitheatre Parkway, Mountain View, california.'
-      });
+    });
 
 
 
@@ -44,15 +44,18 @@ const MapContainer = () => {
     }
 
     const getAreas = (selectedLocation) => {
-        const locat = evData[city].filter(area => area.location==selectedLocation)
-        return locat[0] 
+        const locat = evData[city].filter(area => area.location == selectedLocation)
+        return locat[0]
     }
 
     const getlatLong = (selectedCity) => {
-        return evData[selectedCity].filter(area => area.location==locations)[0]
+        return evData[selectedCity].filter(area => area.address === locations)[0]
     }
 
 
+    const handleSubmit = () => {
+        set_map_locator(getlatLong(city))
+    }
 
     return (<Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
@@ -77,13 +80,13 @@ const MapContainer = () => {
                         placeholder="Select Area"
                         onInputChange={handleLocationChange}
                         value={locations}
-                        options={evData[city].map(area =>  area.location)}
+                        options={evData[city].map(area => area.address)}
                         renderInput={(params) => <TextField {...params} label="Area" />}
                     />
                 </Item>
                 <Item>
 
-                    <Button fullWidth variant="contained" onClick={() => set_map_locator(getlatLong(city))}>Submit</Button>
+                    <Button fullWidth variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Item>
 
             </Grid>

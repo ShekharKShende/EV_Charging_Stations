@@ -1,14 +1,14 @@
 {
     "pune": [
         {
-            "location": "Wakad",
+            "address": "Wakad",
             "lat": 18.5204,
             "lng": 73.8567,
             "cost": "10rs/unit",
             "ev_vehicles": 20
         },
         {
-            "location": "Baner",
+            "address": "Baner",
             "lat": 18.5205,
             "lng": 73.8568,
             "cost": "10rs/unit",
@@ -17,14 +17,14 @@
     ],
     "hyderabad": [
         {
-            "location": "Wakad1",
+            "address": "Wakad1",
             "lat": 18.5204,
             "lng": 73.8567,
             "cost": "10rs/unit",
             "ev_vehicles": 20
         },
         {
-            "location": "Baner",
+            "address": "Baner",
             "lat": 18.5205,
             "lng": 73.8568,
             "cost": "10rs/unit",
@@ -33,14 +33,14 @@
     ],
     "bengaluru": [
         {
-            "location": "Wakad2",
+            "address": "Wakad2",
             "lat": 18.5204,
             "lng": 73.8567,
             "cost": "10rs/unit",
             "ev_vehicles": 20
         },
         {
-            "location": "Baner",
+            "address": "Baner",
             "lat": 18.5205,
             "lng": 73.8568,
             "cost": "10rs/unit",
